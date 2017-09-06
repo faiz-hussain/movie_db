@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/styles.css">     
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+         <!-- <%- include("form"); %> -->
+        <h1 class="text-center">Movie Database</h1>
+        
+            <form action="/form" id="myForm" method="get">
+                <input id="searchbox" name="searchbox" type="text" placeholder="Search Movie">
+                <button id="myButton" type="submit">Search</button> 
+            </form>
+
+
+            <% /*  ----------------------------------------------
+            Repeat the following HTML structure for all movies
+            -------------------------------------------------- */ %>
+        <% for(var i = 0; i < movieName.length; i ++){ %>
+            <a class="movie-link" href=<%= `/movie/${movieName[i].id}` %>>
+            <div class="media movie-list-item">
+                <div class="media-left">
+                    <div class="poster-container">
+                        <img class="media-object movie-poster" src=<%= movieName[i].poster %> />
+                    </div>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <%= movieName[i].title %>
+                        <span class="badge"><%= movieName[i].imdbRating %></span>
+                    </h4>
+                    <div>
+                        <%= movieName[i].plot %>
+                    </div>
+                    <div class="released-date">
+                        Released: <%= movieName[i].released %>
+                    </div>
+                </div>
+            </div>
+            </a>
+            <% } %>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Movies</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/styles.css">        
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("form"); %>
+            <div id="movie-details">
+                <div class="row col-md-1">
+                    <div class=buttons>
+                        <a class="btn btn-primary" href=<%= '/' %>>Back</a>
+                    </div>
+                </div>
+                <h1 class="text-center"><%= movie.title %></h1>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <img class="movie-poster" src=<%= movie.poster %> />
+                    </div>
+                    <div class="col-xs-7">
+                        <table class="table">
+                            <% /*  ----------------------------------------------
+                            Repeat the following HTML structure for all key value pairs in movie object
+                            -------------------------------------------------- */ %>
+                                
+                                 <% for(var prop in movie) {%>
+                                 <% if (prop !== 'id' && prop !== 'poster'){ %>
+                            <tr>
+                                <td><strong><%= prop %>:</strong></td>  
+                                <td><%= movie[prop] %></td>
+                            </tr>
+                                <% } %>
+                            <% } %>
+                            <% /*  ----------------------------------------------
+                            -------------------------------------------------- */ %>
+                        </table>
+                    </div>    
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
+
